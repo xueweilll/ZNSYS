@@ -1,0 +1,78 @@
+<%@ page language="java" contentType="text/html; charset=GBK" pageEncoding="UTF-8"%>
+<%@ include file="../../inc/nocache.inc"%>
+<%@ include file="../../inc/validatewindow.inc"%>
+<html>
+  <head>
+    <title>远程监控</title>
+	<%@ include file="../../inc/easyui.inc"%>
+	<script type="text/javascript">
+		var grid;
+		var m_bDVRControl; 
+		$(function(){	
+		     
+				    var myDate = new Date();
+            		var iYear = myDate.getFullYear();
+		            if (iYear < 1971 || iYear > 2037) {
+		                alert("请将系统时间设置成1971-2037！");
+		            }
+		            if (document.getElementById("HK").object == null) {
+		                alert("请安装控件！");
+		                m_bDVRControl = null;
+		                
+		            }
+            		else {
+                		m_bDVRControl = document.getElementById("HK");
+                		//alert("初始化成功");
+            		}
+             
+			grid=$('#grid').datagrid({
+				title:'摄像头',
+				url:'JsonVideo',
+				fit:true,
+				nowrap: false,
+				rownumbers:true,
+				striped: true,
+				columns:[[
+				    {title:'ID',field:'id',align:'left',hidden:'true'},
+				    {title:'摄像头编号',field:'code',width:100,align:'center'},
+				    {title:'摄像头名称',field:'caption',width:100,align:'center'},
+				    {title:'视频URL地址',field:'url',width:120,align:'center'}
+				    
+				]],
+				singleSelect:true,
+				rownumbers:true,
+				pagination:true,
+				fitColumns:true,
+				onClickRow:function(rowIndex,rowData){
+					// alert(rowData.url);
+					 show(rowData.url);}
+			 });
+			 
+		});
+		
+		function show(url){
+		            var szDevPort = '8000';
+		            var szDevUser = 'admin';
+		            var szDevPwd = '12345';
+          			  m_bDVRControl.Login(url, szDevPort, szDevUser, szDevPwd);
+                		var bRet = m_bDVRControl.StartRealPlay(0, 0, 0);
+                		//alert(bRet);
+		                if (bRet) {
+		                   // alert("成功！");
+		                }
+		                else {
+		                    alert( "请检查ip地址是否正确，及摄像头是否开启！");
+		                }
+		  }
+	</script>
+</head>  
+<body class="easyui-layout">
+	<div region="west" style="width:500px" >
+		 <table id="grid"></table>
+	</div>
+	<div region="center"  >
+		 <object classid="CLSID:CAFCF48D-8E34-4490-8154-026191D73924" codebase="NetVideoActiveX23.cab#version=2,3,11,2" standby="Waiting..." id="HK" width="90%" height="90%" name="HK" ></object>
+	</div>
+</body>
+</html>
+<%@ include file="../../inc/loaded.inc"%>

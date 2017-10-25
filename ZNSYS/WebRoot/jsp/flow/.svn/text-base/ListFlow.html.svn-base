@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>流程图process</title>
+<!--[if lt IE 9]>
+<?import namespace="v" implementation="#default#VML" ?>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="codebase/GooFlow.css"/>
+<script type="text/javascript" src="codebase/jquery.min.js"></script>
+<script type="text/javascript" src="codebase/GooFunc.js"></script>
+<link rel="stylesheet" type="text/css" href="codebase/default.css"/>
+<script type="text/javascript" src="codebase/GooFlow.js"></script>
+<script type="text/javascript">
+
+var property={
+	toolBtns:["task","node"],
+	haveHead:false,														//上边栏
+	//headBtns:["new","open","save","undo","redo","reload"],				//如果haveHead=true，则定义HEAD区的按钮
+	haveTool:true,														//左边栏
+	haveGroup:false,														//分组和连线编辑
+	useOperStack:false													//操作undo的功能开启
+};
+
+/*var remark={
+	cursor:"选择指针",
+	direct:"转换连线",
+	task:"流程步骤",
+	node:"完成步骤",
+	group:"组织划分框编辑开关"
+};*/
+
+var process;
+$(document).ready(function(){
+
+	/**初始化*/
+	process=$.createGooFlow($("#process"),property);
+	//process.setNodeRemarks(remark);
+	
+	/**自定义事件编写*/
+	
+	/**删除*/
+	process.onItemDel=function(id,type){
+		//return confirm("确定要删除该单元吗?");
+		return true;
+	}
+	
+	/**移动事件*/
+	process.onItemMove=function(id,type,left,top){
+		return false;			//不可以移动元素
+	}
+	
+	/**重命名事件*/
+	process.onItemRename=function(id,name,type){
+		return false;			//不可以重命名
+	}
+	
+	/**选定事件*/
+	process.onItemFocus=function(id,type){
+		if(type == "node"){
+			var n = process.$nodeData[id].name;
+			if(process.$nodeData[id].type != "task"){
+				window.parent.getProduce(n);
+			}else{
+				alert("未进行该生产过程！");
+			}
+		}
+	}
+	
+	
+	/**数据加载*/
+	/*jsondata={
+		title:"生产流程图",
+		nodes:{
+			node_1:{name:"接样",left:67,top:49,type:"node",width:86,height:24,marked:true},
+			node_2:{name:"测粘度",left:219,top:49,type:"task",width:86,height:24,marked:true},
+			node_3:{name:"敏感性测试",left:380,top:49,type:"node",width:86,height:24}
+		},
+		lines:{
+			process_line_3:{type:"sl",from:"node_1",to:"node_2",name:"",marked:true},
+			process_line_6:{type:"sl",from:"node_2",to:"node_3",name:"",marked:false}
+		},
+		areas:{
+			process_area_8: {name:"化学分析",left:35,top:10,color:"blue",width:472,height:114}
+		}
+	};
+	process.loadData(jsondata);*/
+	
+	process.$editable=false;						//设置为不可编辑
+	$(".GooFlow_tool").fadeOut();				//隐藏编辑按钮
+	getMax();			//将max置换为继续的大小
+	window.parent.LoadFlow();
+	var bodyheight = document.documentElement.clientHeight;
+	var bodyweight = 590;//document.documentElement.clientWeight;
+	process.reinitSize(bodyweight,bodyheight);
+});
+
+/**设置标题*/
+function setTitle(title){
+	process.setTitle(title);
+}
+
+/**清空内容*/
+function flush(){
+	process.clearData();
+}
+
+/**加载数据*/
+function ReloadData(Title,LineData,LineCount,NodeData,NodeCount,AreaData,AreaCount){
+	//process.$editable = true;
+	try{
+		jsondata={
+			title:Title,
+			nodes:NodeData,
+			lines:LineData,
+			areas:AreaData
+		}
+		process.loadData(jsondata);
+		getMax();
+	}
+	catch(e){
+		alert("载入失败！");
+	}
+}
+
+/**遍历所有的node节点，然后计算最大的*/
+function getMax(){
+	var temp;		//缓存处理节点
+	var temp_max;
+	var max = 1;
+	var  NodeContent = process.$nodeData;
+	//alert(JSON.stringify(obj));
+	for(o in NodeContent){
+		temp = o;
+		temp = temp.replace(/process_node_/,"");
+		temp_max = parseInt(temp);
+		if(temp_max > max){
+			max = temp_max;
+		}
+	}
+	//alert(max);
+	process.$max = max+1;
+}
+
+function LoadHeight(){
+	
+}
+</script>
+</head>
+<body>
+<div id="process"></div>
+</body>
+</html>

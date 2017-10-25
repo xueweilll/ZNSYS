@@ -1,0 +1,73 @@
+*{
+	margin: 0px;
+}
+
+html{
+	height: 100%;
+}
+
+.back{
+	background: url(../images/background01.png) no-repeat;
+	background-size: 100% auto;
+	background-position-y: center;
+}
+
+.title_div{
+	margin-top: 100px;
+	text-align: center;
+}
+
+.title{
+	width:600px;
+	margin:0px auto;
+}
+
+.form{
+	color: #fff;
+	font-family: "黑体";
+	font-size: 1.1em;
+	margin-top:40px;
+	text-shadow: 0.5px 0.5px 1px rgba(0,0,0,0.5);
+}
+
+.input{
+	border:solid 0px #FFFFFF;
+	border-bottom-color: #FFFFFF;
+	border-bottom-width: 2px;
+	background-color: transparent;
+	color:#fff;
+	font-size:1.1em;
+	width:210px;
+}
+
+.loginbutton{
+	background: url(../images/loginbutton.png) no-repeat;
+	width:100px;
+	height:36px;
+	color:#FFFFFF;
+	margin: 40px auto;
+	box-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+	line-height: 36px;
+	font-size: 1.2em;
+	font-family: "微软雅黑";
+	text-shadow: 0.5px 0.5px 0.5px #000;
+	font-weight: 600;
+}
+
+.loginbutton:hover{
+	background: url(../images/loginbutton.png) no-repeat;
+	width:100px;
+	height:34px;
+	color:#FFFFFF;
+	margin: 41px auto;
+	box-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+	line-height: 35px;
+	font-size: 1.2em;
+	font-family: "微软雅黑";
+	text-shadow: 0.5px 0.5px 0.5px #000;
+	font-weight: 600;
+}
+
+.loginbutton:active{
+	font-weight: 900;
+}

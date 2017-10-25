@@ -1,0 +1,564 @@
+<%@ page language="java" contentType="text/html; charset=GBK" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.jfsl.pojo.User" %>
+<%@ include file="./inc/nocache.inc"%>
+<%@ include file="./inc/validateuser.inc"%>
+<%
+User user=(User)session.getAttribute("user");
+String today=new java.text.SimpleDateFormat("yyyy年MM月dd日 EEE").format(new java.util.Date());
+String emplyeename="",departmentname="",username="";
+if (user!=null)
+{
+	username=user.getUsername();
+	emplyeename=user.getName();
+	departmentname=user.getDepartment().getName();
+}
+%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>智能实验室协同 管理平台</title>
+<link rel="stylesheet" type="text/css" href="./css/m1.css">
+<link rel="SHORTCUT ICON" href="favicon.ico">
+<%@ include file="./inc/easyui.inc"%>
+<script src="statistic/Highstock-2.1.5/js/highstock.js" type="text/javascript"></script>
+<script src="statistic/js/Common.js"></script>
+<script>
+	var win;
+	var form;
+	var tabs;
+	var i=0;
+	var tree;
+	var index = 0;
+	var tree;
+	
+	var welcome;
+    
+	$(window).unload(function(){ 
+		$(window).attr('location','logout');
+	});
+
+	$(function(){
+		//bindTabEvent();    //绑定Tab点击事件
+	    bindTabMenuEvent(); //绑定菜单点击事件
+
+	 	//换肤处理
+	 	var themeData = [
+        	{ id: 1, name: "天空蓝(默认主题)", path: "default" },
+        	{ id: 2, name: "苹果银", path: "gray" },
+        	{ id: 3, name: "金属黑", path: "black" },
+        	{ id: 4, name: "银白色", path: "bootstrap" },
+
+        	{ id: 5, name: "清泉蓝", path: "ui-cupertino", disabled: false },
+       	 	{ id: 6, name: "黑巢黑", path: "ui-dark-hive", disabled: false },
+       	 	{ id: 7, name: "杏仁黄", path: "ui-pepper-grinder", disabled: false },
+        	{ id: 8, name: "阳光橙", path: "ui-sunny", disabled: false },
+
+        	{ id: 9, name: "磁贴", path: "metro" },
+        	{ id: 10, name: "磁贴（蓝）", path: "metro-blue" },
+        	{ id: 11, name: "磁贴（灰）", path: "metro-gray" },
+        	{ id: 12, name: "磁贴（绿）", path: "metro-green" },
+        	{ id: 13, name: "磁贴（橙）", path: "metro-orange" },
+        	{ id: 14, name: "磁贴（红）", path: "metro-red" }
+    	];
+	    
+	    var themeCombo = $("#themeSelector").combobox({
+            width: 140, editable: false,
+            data: themeData,
+            valueField: "path", textField: "name",
+            value:"天空蓝(默认主题)",
+            onSelect: function (record) {
+                //alert(JSON.stringify(record));
+                changeThemeFun(record.path);
+            }
+        });
+
+        //弹出框
+		win=$('#win1').window({
+			title:"修改密码",
+			closed:true,
+			modal:true,
+			closable:true,
+			minimizable:false,
+			maximizable:false,
+			collapsible:false,
+			resizable:false
+		});
+		form=win.find('form');
+
+		tabs=$('<div></div>');
+		$('#mainregion').append(tabs);
+		tabs.tabs({
+			fit:true,
+			plain:false,
+			border:false
+		});
+
+		//addTab('通知公告','jsp/message/ListNotice.jsp','icon-0202',false,false);
+
+		//加载树形菜单
+		tree = $('#function').tree({
+			url: 'JsonUserFunction?username=<%=username%>',
+			onClick:function(node){
+				if ($('#function').tree('isLeaf',node.target)){
+					if (node.attributes.inframe=='0')
+						window.open(node.attributes.formurl,node.text,'fullscreen=no');
+					else
+						addTab(node.text,node.attributes.formurl,node.attributes.icon,true,node.attributes.showhint);
+				}
+				else
+					if (node.state=='open') $('#function').tree('collapse',node.target);
+					else $('#function').tree('expand',node.target);
+			},
+			onLoadSuccess:function(){
+				<%
+					int menu = Integer.parseInt(request.getParameter("menu"));
+					System.out.println("###目录："+menu);
+					if(menu == 1001){
+						//如果是1001是系统管理，不弹出tab，只进行目录展开
+						out.println("$('#main').layout('expand','west');");
+					}else out.println("clickTree('"+menu+"');");
+				%>
+			}
+		});
+		
+		//tabs按钮
+		tabs.tabs({tools:'#tab-tools'}); 
+		/*tabs.tabs({
+			tools:[{
+				iconCls:'icon-exp',
+				handler:function(){
+					$(this).toggle(
+						function(){
+							$("#main").layout('collapse','north');
+							$("#main").layout('collapse','west');
+							$("#main").layout('collapse','east');
+						},
+						function(){
+							$("#main").layout('expand','north');
+							$("#main").layout('expand','west');
+							$("#main").layout('expand','east');
+						})
+				}
+			},{
+				iconCls:'icon-cross',
+				handler:function(){
+					$('.tabs-inner span').each(function(i, n) {    
+           				 if ($(this).parent().next().is('.tabs-close')) {    
+               				 var t = $(n).text();    
+                			tabs.tabs('close', t);    
+            			}    
+        			});
+				}
+			}]
+		});*/
+		
+		//自动缩进左侧菜单栏
+		$("#main").layout('collapse','west');
+		
+		$("#icon-exp").toggle(
+			function(){
+				$("#main").layout('collapse','north');
+				$("#main").layout('collapse','west');
+				$("#main").layout('collapse','east');
+			},
+			function(){
+				$("#main").layout('expand','north');
+				$("#main").layout('expand','west');
+				$("#main").layout('expand','east');
+			}
+		);
+		//加载横式菜单
+		//$.getJSON('JsonUserFunction?username=<%=username%>',function(json){createMain(json)});
+		
+		//修改主题
+		if ($.cookie('easyuiThemeName')) {
+    		changeThemeFun($.cookie('easyuiThemeName'));
+    		themeCombo.combobox('select', $.cookie('easyuiThemeName'));  
+    	}
+	});
+	//预加载结束
+	
+	function tabs_cross(){
+		$('.tabs-inner span').each(function(i, n) {    
+				 if ($(this).parent().next().is('.tabs-close')) {    
+  				 var t = $(n).text();    
+   			tabs.tabs('close', t);    
+			}    
+		});
+	}
+	
+	function createMain(ja)
+	{
+		for(var i=0;i<ja.length;i++)
+		{
+			var d=$('<div id="mm'+(i+1)+'" style="width:160px;"></div>');
+			$('body').append(d);
+			createSub(d,ja[i]);
+			var mb=$('<a href="#" id="mb'+i+'">'+ja[i].text+'</a>');
+			mb.menubutton({
+				menu:'#mm'+(i+1),
+				iconCls:ja[i].iconCls
+			});
+			$('#mainmenu').append(mb);
+		}
+	}
+
+	function createSub(ob,json)
+	{
+		for(var i=0;i<json.children.length;i++)
+		{
+			var js=json.children[i];
+			if (js.children==null) 
+				ob.append('<div iconCls="'+js.iconCls+'" onclick="addTab(\''+js.text+'\',\''+js.attributes.formurl+'\',true);">'+js.text+'</div>');
+				//ob.append('<div iconCls="'+js.iconCls+'" onclick="addWindow(\''+js.id+'\',\''+js.text+'\',\''+js.attributes.formurl+'\');">'+js.text+'</div>');
+			else
+			{
+				var d1=$('<div iconCls="'+js.iconCls+'"><span>'+js.text+'</span></div>');
+				var d2=$('<div style="width:160px;"></div>');
+				d1.append(d2);
+				ob.append(d1);
+				createSub(d2,js);
+			}
+		}
+	}
+
+	/* //...
+	function bindTabEvent(){    
+    $(".tabs-inner").live('dblclick',function(){    
+        var subtitle = $(this).children("span").text();    
+        if($(this).next().is('.tabs-close')){    
+            tabs.tabs('close',subtitle);    
+        }    
+    });    
+    $(".tabs-inner").live('contextmenu',function(e){    
+        $('#mm').menu('show', {    
+            left: e.pageX,    
+            top: e.pageY    
+     });    
+     var subtitle =$(this).children("span").text();    
+     $('#mm').data("currtab",subtitle);    
+     return false;    
+    });    
+ }  */   
+	function bindTabMenuEvent() {    
+	    //关闭当前    
+	    $('#mm-tabclose').click(function() {
+	        var currtab_title = $('#mm').data("currtab");    
+	        //if ($(this).next().is('.tabs-close')) {    
+	        //    tabs.tabs('close', currtab_title);    
+	        //} 
+	        tabs.tabs('close',currtab_title); 
+	    });    
+	    //全部关闭    
+	    $('#mm-tabcloseall').click(function() {
+	        $('.tabs-inner span').each(function(i, n) {    
+	            if ($(this).parent().next().is('.tabs-close')) {    
+	                var t = $(n).text();    
+	                tabs.tabs('close', t);    
+	            }    
+	        });    
+	    });    
+	    //关闭除当前之外的TAB    
+	    $('#mm-tabcloseother').click(function() {    
+	        var currtab_title = $('#mm').data("currtab");    
+	        $('.tabs-inner span').each(function(i, n) {    
+	            if ($(this).parent().next().is('.tabs-close')) {    
+	                var t = $(n).text();    
+	                if (t != currtab_title)    
+	                    tabs.tabs('close', t);    
+	            }    
+	        });    
+	    });    
+	    //关闭当前右侧的TAB    
+	    $('#mm-tabcloseright').click(function() {    
+	        var nextall = $('.tabs-selected').nextAll();    
+	        if (nextall.length == 0) {    
+	            alert('已经是最后一个了');    
+	            return false;    
+	        }    
+	        nextall.each(function(i, n) {    
+	            if ($('a.tabs-close', $(n)).length > 0) {    
+	                var t = $('a:eq(0) span', $(n)).text();    
+	                tabs.tabs('close', t);    
+	            }    
+	        });    
+	        return false;    
+	    });    
+	    //关闭当前左侧的TAB    
+	    $('#mm-tabcloseleft').click(function() {    
+	        var prevall = $('.tabs-selected').prevAll();    
+	        if (prevall.length == 1) {    
+	            alert('已经是第一个了');    
+	            return false;    
+	        }    
+	        prevall.each(function(i, n) {    
+	            if ($('a.tabs-close', $(n)).length > 0) {    
+	                var t = $('a:eq(0) span', $(n)).text();    
+	                tabs.tabs('close', t);    
+	            }    
+	        });    
+	        return false;    
+	    });    
+	}   
+	//....
+	/*
+	function addWindow(id,title,url){
+		if ($('#win'+id).length<=0)//窗口不存在，初始化
+		{
+			var content='<iframe style="display:none;" width="100%" height="100%" frameborder="0" src="'+url+'"></iframe>'+
+			'<div id="popup_container">' +
+		    '<h1 id="popup_title">提示</h1>' +
+		    '<div id="popup_window">' +
+		    '<div id="popup_message">'+
+		    '页面正在载入中，请稍等......'+
+		    '</div>' +
+			'</div>' +
+		    '</div>';
+			var wd=$('<div id="win'+id+'"></div>');
+			wd.html(content);
+			$('#mainregion').append(wd);
+			wd.window({
+				title:title,
+				closed:true,
+				modal:false,
+				closable:true,
+				minimizable:true,
+				maximizable:true,
+				collapsible:false,
+				resizable:false,
+				inline:true
+			});
+		}
+		$('#win'+id).window('maximize');
+		$('#win'+id).window('open');
+	}
+	*/
+//导航树 折叠展开
+
+			
+
+
+	function addTab(title,url,icon,closeable,showhint){ 
+		var content;
+		if (showhint=='1')
+		{
+			content='<iframe style="display:none;" width="100%" height="100%" frameborder="0" src="'+url+'"></iframe>'+
+			'<div id="popup_container">' +
+		    '<h1 id="popup_title">提示</h1>' +
+		    '<div id="popup_window">' +
+		    '<div id="popup_message">'+
+		    '页面正在载入中，请稍等......'+
+		    '</div>' +
+			'</div>' +
+		    '</div>';
+		}
+		else
+			content='<iframe width="100%" height="100%" frameborder="0" src="'+url+'"></iframe>';
+		if(tabs.tabs('exists',title)){
+			tabs.tabs('select',title)
+		}else
+		{
+			tabs.tabs('add',{
+				title:title,
+				iconCls:icon,
+				content:content,
+				closable:closeable
+			});
+		}
+	}
+	
+	function cancel(){
+		win.window('close');
+	}
+	
+	function changepsw()
+	{
+		form.form('clear');
+		$('#username').val('<%=username%>');
+		win.window('open');
+		form.url='ChangePsw';
+	}
+	
+	function save(){
+		var oldpsw=$('#userpsw').val();
+		var newpsw=$('#newpsw').val();
+		var repsw=$('#repsw').val();
+		if(oldpsw=="")
+		{
+			showWarning('请输入原密码！',function(){$('#userpsw').focus();});
+			return;
+		}
+		if(newpsw=="")
+		{
+			showWarning('请输入新密码！',function(){$('#newpsw').focus();});
+			return;
+		}
+		if(repsw=="")
+		{
+			showWarning('请输入新密码确认！',function(){$('#repsw').focus();});
+			return;
+		}
+		if(newpsw!=repsw)
+		{
+			showError('两次输入密码不一致！',function(){$('#repsw').focus();});
+			return;
+		}
+		form.form('submit',{
+			url:form.url,
+			success:function(data){
+				eval(data);
+			}
+		});
+	}
+
+	function logout()
+	{
+		$('#logout').blur();
+		showConfirm('您确认要退出系统吗?',function(){
+			DeleteCookie("autologin","/");
+			window.location='logout';
+		});
+	}
+	//删除cookie
+	function DeleteCookie(name,path){
+		var name = escape(name);
+		var expires = new Date(0);
+		
+		path = path ==""?"":";path=" + path;
+		document.cookie = name + "=" + ";expires="+expires.toUTCString()+path;
+	}
+	
+	//模拟触发tree
+	function clickTree(treeNumber){
+		var w = parseInt(treeNumber.length / 3);
+		
+		var number = [];
+		//alert(treeNumber);
+		var treeNumberTemp = treeNumber;
+		
+		for(var i=w;i>=0;i--){
+			number[i] = parseInt(treeNumber.substring((treeNumber.length-3),treeNumber.length));
+			treeNumber = treeNumber.substring(0,(treeNumber.length-3));
+			//alert(number+"########"+treeNumber);
+		}
+		var tempNode = $("#function").tree('getRoots');
+		if(tempNode == "" || tempNode == null){
+			//$.messager.alert("警告","延时"+JSON.stringify(tempNode));
+			setTimeout(clickTree(treeNumberTemp),1000);
+		}else{
+			var n = number[0]-1;
+			var tree2 = tempNode[n].target;
+			if(number.length>1){
+				var tree3 = $("#function").tree('getChildren',tree2);
+				var n2 = number[1]-1;
+				var tree4 = tree3[n2];
+				if(number.length>2){
+					//最多再处理一层目录，要是再深入就需要重写
+					var tree5 = $("#function").tree('getChildren',tree4.target);
+					n3 = number[2]-1;
+					var tree6 = tree5[n3];
+					tree6.target.click();
+				}else{
+					tree4.target.click();
+				}
+			}else tree2.click();
+		}
+	}
+	
+	function showMenu(){
+		alert('dd');
+		$("#m2").button('show',{left:0,top:500});
+	}
+	
+	function expandfold(){
+		if(i%2==0){$("#function").tree('collapseAll');}
+		else{$("#function").tree('expandAll');}
+		i++;
+	}
+</script>
+</head>
+<body id="main" class="easyui-layout">
+	<div region="north" border="false" style="height:80px; width:100%; overflow:hidden">
+		<div class="backhistory"  onclick="window.history.go(-1)"></div>
+	    <div id="head_bg" style="text-align:center">
+	    <font style="color:#fff;font-size:50px;line-height:80px;padding-left:150px;font-family:'黑体'">智能实验室协同管理平台</font>
+		<div id="head_content">
+	    <table width="206" border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+		    <td class="bg">
+				<span class="text_head"><%=emplyeename%></span>
+				<span class="text_normal"><%=departmentname%></span>
+				<span class="text_normal">
+				<a style="background:url(images/pass.png) no-repeat;background-position:0 -1px;" id="changepsw" href="#" onclick="changepsw();"><span>修改密码</span></a>
+				<a style="background:url(images/logout.png) no-repeat;background-position:0 -1px;" id="logout" href="#" onclick="logout()"><span>退出系统</span></a>
+				</span>
+			</td>
+		  </tr>
+		</table>
+		</div>
+		</div>
+		<!--
+		<div id="mainmenu" style="background:url(images/menu_bg.png) repeat-x;font-size=12px;font-weight:bold;height:32px;width:100%;padding-top:3px;">
+			<a align="right" class="easyui-linkbutton" plain="true" iconCls="icon-logout" href="#" onclick="logout()" style="float:right;">退出系统</a>
+			<a align="right" class="easyui-linkbutton" plain="true" iconCls="icon-key" href="#" onclick="changepsw();" style="float:right;">修改密码</a>
+		</div>
+		-->
+	</div>
+	
+	<div region="west" title="功能导航" split="false" style="width:200px;overflow:auto;">
+		<div align="left" style="background-color:#DAE6FC;margin-bottom:10px;line-height:20px;box-shadow:0px 1px 1px rgba(0,0,0,0.3);">  <a style="margin:5px;padding:5px;text-decoration: none;font-size: 10px;border-bottom-color: black;" href="#" id="expandfold" onclick="expandfold();"><img src="images/expand2.png" style="margin-left:10px;" width="10px"/>展开|折叠</a></div>
+	   
+	     
+		<ul id="function"></ul>
+	</div>
+	<div region="center" id="mainregion">
+	</div>
+
+	<div region="south" border="false" align="center" style="height:16px;background:#E1F0F2;font-size=12px;font-weight:bold;">
+		 <div id="timerSpan"></div>
+	</div>
+	
+	<div id="win1" style="width:auto;height:auto;">
+		<div style="padding:10px 10px 10px 20px;">
+			<form method="post" id="userform">
+			<input type="hidden" name="username" id="username" />
+				<table>
+					<tr>
+					<td align="right">原密码：</td>
+					<td><input type="password" id="userpsw" name="userpsw" class="input-p" style="width:150px;"/>
+					</td></tr>
+					<tr>
+					<td align="right">新密码：</td>
+					<td><input type="password" id="newpsw" name="newpsw" class="input-p" style="width:150px;"/>
+					</td></tr>
+					<tr>
+					<td align="right">确认密码：</td>
+					<td><input type="password" id="repsw"name="repsw" class="input-p" style="width:150px;"/>
+					</td>
+					</tr>	
+				</table>
+			</form>
+			<p align="center">
+				<a href="#" class="easyui-linkbutton" icon="icon-ok" onClick="save();">确定</a>
+				<a href="#" class="easyui-linkbutton" icon="icon-cancel" onClick="cancel();">取消</a>
+			</p>
+		</div>
+	</div>
+	<div id="mm" class="easyui-menu" style="width:150px;">    
+        <div id="mm-tabclose" data-options="iconCls: 'icon-closenow'">关闭当前</div>    
+        <div id="mm-tabcloseall" data-options="iconCls: 'icon-cross'">关闭全部</div>    
+        <div id="mm-tabcloseother" data-options="iconCls: 'icon-closeall'">关闭其他</div>    
+        <div class="menu-sep" data-options="iconCls: 'icon-metro-expand'"></div>    
+        <div id="mm-tabcloseright" data-options="iconCls: 'icon-closeright'">关闭右侧标签</div>    
+        <div id="mm-tabcloseleft" data-options="iconCls: 'icon-closeleft'">关闭左侧标签</div>    
+    </div>
+    
+    <div id="tab-tools">
+        <select id="themeSelector"></select>
+   		<a href="#" class="easyui-linkbutton easyui-tooltip" title="全屏查看" plain="true" iconCls="icon-exp" id="icon-exp"></a>  	
+    	<a href="#" class="easyui-linkbutton easyui-tooltip" title="关闭所有面板" plain="true" iconCls="icon-cross" onclick="tabs_cross()"></a>  
+	</div>
+</body>
+</html>

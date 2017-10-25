@@ -1,0 +1,108 @@
+package com.jfsl.action;
+
+import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLDecoder;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.InterceptorRef;
+import org.apache.struts2.convention.annotation.InterceptorRefs;
+import org.apache.struts2.convention.annotation.ParentPackage;
+import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.convention.annotation.Results;
+
+import com.jfsl.pojo.LinkUrl;
+import com.jfsl.pojo.User;
+import com.jfsl.util.*;
+
+@SuppressWarnings("serial")
+@ParentPackage("default")
+@Results( {
+		@Result(name = "doList",location = "jsp/link/index.jsp")
+})
+		
+public class LinkAction extends BaseAction{
+	
+	private String url;
+	private String value_1;
+	private String value_2;
+	
+	private User user;
+	
+	private LinkUrl linkurl;
+	
+	public LinkUrl getLinkurl() {
+		return linkurl;
+	}
+
+	public void setLinkurl(LinkUrl linkurl) {
+		this.linkurl = linkurl;
+	}
+	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	
+	public String getValue_1() {
+		return value_1;
+	}
+
+	public void setValue_1(String value_1) {
+		this.value_1 = value_1;
+	}
+
+	public String getValue_2() {
+		return value_2;
+	}
+
+	public void setValue_2(String value_2) {
+		this.value_2 = value_2;
+	}
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	@Action(value = "LinkUrl")
+	public String ListUrl(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		/*url = (String)request.getParameter("url");
+		value_1 = (String)request.getParameter("value_1");
+		value_2 = (String)request.getParameter("value_2");*/
+		System.out.println("url:"+url+",value_1:"+value_1+",value_2:"+value_2);
+		
+		if(url!=null && value_1!=null &&value_2!=null){
+			//获取用户名和密码
+			HttpSession session = request.getSession();
+			user = (User) session.getAttribute("user");
+			
+			/*Map<String, String> params = new HashMap<String,String>();
+			params.put("\"secret\"", "\""+user.getUserpsw()+"\"");
+			//String password = HttpTookit.doPost("http://tool.zzblo.com/api/md5/decrypt", params);*///MD5 解密尝试
+			
+			linkurl = new LinkUrl();
+			linkurl.setUrl(url);
+			linkurl.setUsername(user.getUsername());
+			linkurl.setPassword(user.getUserpsw());
+			linkurl.setValue_1(value_1);
+			linkurl.setValue_2(value_2);
+			
+			return "doList";
+		}else return "error";
+	}
+}

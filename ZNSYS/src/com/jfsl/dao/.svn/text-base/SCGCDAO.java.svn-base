@@ -1,0 +1,27 @@
+package com.jfsl.dao;
+
+/**time package*/
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import com.jfsl.pojo.SCGC;
+
+public class SCGCDAO extends DAOImp
+{
+	@SuppressWarnings("unchecked")
+	public List<SCGC> ListAll(){
+    	Query query=this.getOracleCurrentSession().createQuery("select distinct s from SCGC s order by s.id.csname,gcsx");
+    	List<SCGC> list = (List<SCGC>)query.list();
+    	return list;
+    }
+	
+	public List ListCombxmzmc(){
+		Query query  = this.getOracleCurrentSession().createQuery("select distinct s.id.xmzmc from SCGC s");
+		List list = query.list();
+		return list;
+	}
+}

@@ -1,0 +1,84 @@
+package com.jfsl.action;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.InterceptorRef;
+import org.apache.struts2.convention.annotation.InterceptorRefs;
+import org.apache.struts2.convention.annotation.ParentPackage;
+import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.convention.annotation.Results;
+
+import com.jfsl.dao.DataDictionaryDAO;
+import com.jfsl.dao.TongjiDAO;
+import com.jfsl.pojo.DataDictionary;
+import com.jfsl.util.JSONOperator;
+
+
+@SuppressWarnings("serial")
+@ParentPackage("default")
+@Results( {	
+		@Result(name = "ListAnalysis", location = "jsp/jqplot/sqltj.jsp"),
+		@Result(name = "ListEmployeeAnalysis", location = "jsp/jqplot/test.jsp"),
+		@Result(name = "ListProcedureAnalysis", location = "jsp/jqplot/tongji.jsp"),
+		
+		})
+@InterceptorRefs( { @InterceptorRef("defaultStack"),
+		@InterceptorRef("validateUserInterceptor"),
+		@InterceptorRef("operateLogInterceptor") })
+		
+public class tongjiAction extends BaseAction
+{
+	
+	private String sql;
+	private TongjiDAO jdao=new TongjiDAO();
+	public String getSql() {
+		return sql;
+	}
+
+	public void setSql(String sql) {
+		this.sql = sql;
+	}
+
+	@Action(value="ListProcedureAnalysis")
+	public String listDic(){
+		return "ListProcedureAnalysis";
+	}
+	 
+	@Action(value="ListEmployeeAnalysis")
+	public String JsonDatadictionary(){
+		return "ListEmployeeAnalysis";
+		
+	}
+	@Action(value="ListAnalysis")
+	public String JsonDatadictionaryBysjbmc(){
+		return "ListAnalysis";
+	}
+	@SuppressWarnings("null")
+	@Action(value="jsonph")
+	public void jsonph(){
+		 String ph=this.jdao.jsonph();
+		 System.out.println(ph);
+		 this.printJson(ph);
+	 }
+	 
+	@Action(value="jsonwcqk")
+	public void jsonwcqk(){
+		 String ph=this.jdao.jsonwcqk();
+		 System.out.println(ph);
+		 this.printJson(ph);
+	 }
+	@Action(value="jsonsql")
+	public void jsonsql(){
+		System.out.println("×Ô¶¨Òå"+sql);
+		 String s=this.jdao.jsonsql(sql);
+		 System.out.println(s);
+		 this.printJson(s);
+	}
+}

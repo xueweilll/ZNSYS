@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/interceptor
+END
+OperateLogInterceptor.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/interceptor/OperateLogInterceptor.java
+END
+ValidatePowerInterceptor.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/interceptor/ValidatePowerInterceptor.java
+END
+ValidateUserInterceptor.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/interceptor/ValidateUserInterceptor.java
+END

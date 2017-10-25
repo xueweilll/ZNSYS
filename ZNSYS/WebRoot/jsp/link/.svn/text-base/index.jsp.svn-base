@@ -1,0 +1,56 @@
+<%@ page language="java" contentType="text/html; charset=GBK" pageEncoding="UTF-8"%>
+<%@page import="com.jfsl.pojo.LinkUrl"%>
+<%
+	LinkUrl linkurl = (LinkUrl)request.getAttribute("linkurl");
+%>
+
+<html>
+  <head>
+    <title>自动跳转</title>
+    <%@ include file="../../inc/easyui.inc"%>
+	<script>
+		<%--
+		var urladdress = '<%=linkurl.getUrl()%>';
+		var username = '<%=linkurl.getUsername()%>';
+		var password = '<%=linkurl.getPassword()%>';
+		var value_1 = '<%=linkurl.getValue_1()%>';
+		var value_2 = '<%=linkurl.getValue_2()%>';
+		
+		var DataString = "{\""+value_1+"\":\""+username+"\",\""+value_2+"\":\""+password+"\"}";
+		var postData = JSON.parse(DataString);
+		
+		alert(postData);
+		$.post({urladdress,postData,function(data,textStatus){
+				alert(data);
+			}
+		});--%>
+		$(function(){
+			//alert(myForm.action+","+myForm.method);
+			var password = "<%=linkurl.getPassword()%>";
+			$.ajax({
+				url:"http://tool.zzblo.com/api/md5/decrypt",
+				type : "get",
+			    async:false,
+			    dataType : "jsonp",
+			    jsonp: "callbackparam",//服务端用于接收callback调用的function名的参数
+			    jsonpCallback:"success_jsonpCallback",//callback的function名称
+				data:{secret:password},
+				success:function(json){
+					alert(json);
+				}
+			});
+				
+			
+			myForm.action = "<%=linkurl.getUrl()%>";
+			//myForm.submit();
+		});
+		
+	</script>
+</head>  
+<body>
+	<form name="myForm" action="" method="post">
+		<input type="text" name="<%=linkurl.getValue_1()%>"/ value="<%=linkurl.getUsername()%>">
+		<input type="password" name="<%=linkurl.getValue_2()%>" value=""/>
+	</form>
+</body>
+</html>

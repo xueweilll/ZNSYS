@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.convention.package.locators" value="action" />
+	<constant name="struts.convention.result.path" value="/" />
+	<constant name="struts.i18n.encoding" value="GBK" />
+	<constant name="struts.multipart.maxSize" value="20971520"/>
+	<package name="default" extends="struts-default">
+		<result-types>
+			<result-type name="streamx" class="com.sunspoter.lib.web.struts2.dispatcher.StreamResultX"/>
+		</result-types> 
+		<interceptors>
+			<interceptor name="annotationInterceptor" class="com.opensymphony.xwork2.interceptor.annotations.AnnotationWorkflowInterceptor"/>
+			<interceptor name="validateUserInterceptor" class="com.jfsl.interceptor.ValidateUserInterceptor" />
+			<interceptor name="validatePowerInterceptor" class="com.jfsl.interceptor.ValidatePowerInterceptor" />
+			<interceptor name="operateLogInterceptor" class="com.jfsl.interceptor.OperateLogInterceptor" />
+	   	</interceptors>
+   		<global-results>
+	    	<result type="redirect" name="login">/login.jsp</result>
+	    	<result name="uploaddone">/common/uploaddone.jsp</result>
+	    	<result name="uploadfail">/common/uploadfail.jsp</result>
+	    	<result name="nopower">/common/nopower.jsp</result>
+	    	<result name="errorexport">/common/errorexport.jsp</result>
+	    	<result name="emptyexport">/common/emptyexport.jsp</result>
+	    	<result name="add">/common/add.jsp</result>
+	    	<result name="update">/common/update.jsp</result>
+	    	<result name="delete">/common/delete.jsp</result>
+	    	<result name="send">/common/send.jsp</result>
+	    	<result name="save">/common/save.jsp</result>
+	    	<result name="submit">/common/submit.jsp</result>
+	    	<result name="transmit">/common/transmit.jsp</result>
+	    	<result name="timeout">/common/timeout.jsp</result>
+	    	<result name="error">/common/error.jsp</result>
+	    	<result name="recordstatus">/common/recordstatus.jsp</result>
+	    	<result name="dispose">/common/dispose.jsp</result>
+	    	<result name="replicate">/common/replicate.jsp</result>
+	    	<result name="documentstatus">/common/documentstatus.jsp</result>
+    	</global-results>
+   	</package>
+</struts>    

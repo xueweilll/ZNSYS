@@ -1,0 +1,9 @@
+#Mon Feb 02 08:11:50 CST 2015
+eclipse.preferences.version=1
+encoding//WebRoot/inc/loaded.inc=UTF-8
+encoding//WebRoot/inc/validateuser.inc=UTF-8
+encoding//WebRoot/jsp/datadictionary/AddDictionary.jsp=UTF-8
+encoding//WebRoot/login.html=UTF-8
+encoding//src/com/jfsl/action/ComAction.java=UTF-8
+encoding//src/com/jfsl/action/MessageAction.java=UTF-8
+encoding//src/com/jfsl/action/PushAction.java=UTF-8

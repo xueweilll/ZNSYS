@@ -1,0 +1,269 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo
+END
+WarnLevel.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/WarnLevel.java
+END
+Operation.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/Operation.java
+END
+Consignor.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/Consignor.java
+END
+Sms.java
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/Sms.java
+END
+Department.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/Department.java
+END
+EquipmentFault.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/EquipmentFault.java
+END
+Well.java
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/Well.java
+END
+Flow.java
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/Flow.java
+END
+WarnLog.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/WarnLog.java
+END
+Process.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/Process.java
+END
+User.java
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/User.java
+END
+Push.java
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/Push.java
+END
+Control.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/Control.java
+END
+Message.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/Message.java
+END
+LoginInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/LoginInfo.java
+END
+SmsGroupAddList.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/SmsGroupAddList.java
+END
+EquipmentMaintain.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/EquipmentMaintain.java
+END
+SCGCKey.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/SCGCKey.java
+END
+DataDictionaryPK.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/DataDictionaryPK.java
+END
+UserOperation.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/UserOperation.java
+END
+DataDictionary.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/DataDictionary.java
+END
+OperateLog.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/OperateLog.java
+END
+Role.java
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/Role.java
+END
+WasavR.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/WasavR.java
+END
+SmsLog.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/SmsLog.java
+END
+Backup.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/Backup.java
+END
+Video.java
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/Video.java
+END
+Project.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/Project.java
+END
+Equipment.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/Equipment.java
+END
+Pojo.java
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/Pojo.java
+END
+Area.java
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/Area.java
+END
+WarnDict.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/WarnDict.java
+END
+Room.java
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/Room.java
+END
+Action.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/Action.java
+END
+Com.java
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/Com.java
+END
+SCGC.java
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/SCGC.java
+END
+LoginInfoPk.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/LoginInfoPk.java
+END
+SmsGroup.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/SmsGroup.java
+END
+LinkUrl.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/LinkUrl.java
+END
+AddList.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/AddList.java
+END
+Function.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/Function.java
+END
+Production.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/Production.java
+END
+OperateLogPk.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/OperateLogPk.java
+END
+Steps.java
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/pojo/Steps.java
+END

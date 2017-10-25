@@ -1,0 +1,275 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/Skylight/!svn/ver/8/ZNSYS/src/com/jfsl/dao
+END
+RoomDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/RoomDAO.java
+END
+ComDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/ComDAO.java
+END
+PushDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/PushDAO.java
+END
+DAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/DAO.java
+END
+RvavR1DAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/RvavR1DAO.java
+END
+ZGCDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/ZGCDAO.java
+END
+AddListDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/AddListDAO.java
+END
+DAOImp.java
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/DAOImp.java
+END
+RiverR1DAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/RiverR1DAO.java
+END
+PstatR1DAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/PstatR1DAO.java
+END
+DataDictionaryDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/DataDictionaryDAO.java
+END
+UserOperationDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/UserOperationDAO.java
+END
+RoleDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/RoleDAO.java
+END
+OperateLogDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/OperateLogDAO.java
+END
+SmsDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/SmsDAO.java
+END
+DictionaryDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/DictionaryDAO.java
+END
+BackupDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/BackupDAO.java
+END
+OracleDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/OracleDAO.java
+END
+EquipmentDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/Skylight/!svn/ver/8/ZNSYS/src/com/jfsl/dao/EquipmentDAO.java
+END
+WarnDictDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/WarnDictDAO.java
+END
+UserDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/UserDAO.java
+END
+SmsGroupDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/SmsGroupDAO.java
+END
+SCGCDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/SCGCDAO.java
+END
+ControlDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/ControlDAO.java
+END
+SmsGroupAddListDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/SmsGroupAddListDAO.java
+END
+LoginInfoDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/LoginInfoDAO.java
+END
+MessageDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/MessageDAO.java
+END
+PptnR1DAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/PptnR1DAO.java
+END
+FunctionDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/FunctionDAO.java
+END
+RsvravR1DAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/RsvravR1DAO.java
+END
+EquipmentMaintainDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/Skylight/!svn/ver/8/ZNSYS/src/com/jfsl/dao/EquipmentMaintainDAO.java
+END
+TongjiDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/TongjiDAO.java
+END
+RsvrR1DAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/RsvrR1DAO.java
+END
+WarnLevelDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/WarnLevelDAO.java
+END
+ProduceDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/ProduceDAO.java
+END
+DepartmentDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/DepartmentDAO.java
+END
+EquipmentFaultDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/EquipmentFaultDAO.java
+END
+SmsLogDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/SmsLogDAO.java
+END
+VideoDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/VideoDAO.java
+END
+FlowDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/FlowDAO.java
+END
+LoginDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/LoginDAO.java
+END
+AreaDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/AreaDAO.java
+END
+LogoutDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/LogoutDAO.java
+END
+JsonDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/JsonDAO.java
+END
+WarnLogDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/Skylight/!svn/ver/2/ZNSYS/src/com/jfsl/dao/WarnLogDAO.java
+END

@@ -1,0 +1,61 @@
+*{
+	margin: 0px;
+}
+
+html{
+	height: 100%;
+}
+
+.head{
+	height:80px;
+	background: url(../images/head_bg.png);
+}
+
+.content{
+	height:100%;
+}
+
+.left{
+	width:25%;
+	height:100%;
+	float:left;
+}
+
+.center{
+	width:75%;
+	height:100%;
+	float: left;
+}
+
+.title{
+	font-size: 2em;
+	font-family: "黑体";
+	font-weight: 700;
+	width:2em;
+	float: right;
+	margin-top: auto 0px;
+	color:RGB(51,51,153);
+	border-right: solid 4px rgb(51,51,153);
+	padding:10px 0px;
+	text-shadow: 3px 3px 1px #AAA;
+}
+
+.img{
+	padding:10px 0px 10px 40px;
+	width:650px;
+}
+
+.img img{
+	width:133px;
+	height:133px;
+	float:left;
+	margin:3px;
+}
+
+.img img:hover{
+	transform:rotate(2deg);
+	-ms-transform:rotate(2deg);
+	-moz-transform:rotate(2deg);
+	-webkit-transform:rotate(2deg);
+	-o-transform:rotate(2deg);
+}
